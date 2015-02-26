@@ -43,6 +43,14 @@ After the container has been built and run, you can start it and stop it by its 
 	docker start eap
 
 # 4 Populating data
+
+To configure Maven with the Red Hat Maven public repository, you can copy the provided Maven settings in your home:
+
+	mv ~/.m2/settings.xml ~/.m2/settings.xml.bak
+	cp example-settings.xml ~/.m2/settings.xml
+
+At this point you can build and execute the application:
+
 	git clone https://github.com/mpbravo/hotrod-demo.git
 	cd hotrod-demo
 	mvn clean package
