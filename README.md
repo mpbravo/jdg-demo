@@ -6,6 +6,10 @@ This demo is based on previous work, see:
  * JDG Visualizer Demo <https://github.com/infinispan/visual>
  * Hot Rod Demo <https://github.com/saturnism/hotrod-demo>
 
+
+![](images/pelotitas.png?raw=true)
+
+
 There are two Docker containers:
  * A JBoss Data Grid container, running four Data Grid instances
  * A JBoss Enterprise Application Platform, running the visualizer application
