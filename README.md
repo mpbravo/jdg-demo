@@ -44,16 +44,11 @@ After the container has been built and run, you can start it and stop it by its 
 
 # 4 Populating data
 
-To configure Maven with the Red Hat Maven public repository, you can copy the provided Maven settings in your home:
-
-	mv ~/.m2/settings.xml ~/.m2/settings.xml.bak
-	cp example-settings.xml ~/.m2/settings.xml
-
-At this point you can build and execute the application:
+To populate the grid with data we are going to build and execute the hotrod-demo application:
 
 	git clone https://github.com/mpbravo/hotrod-demo.git
 	cd hotrod-demo
-	mvn clean package
+	mvn -s example-settings.xml clean package
 	./data.sh
 
 # 5 Visualizing the cache
