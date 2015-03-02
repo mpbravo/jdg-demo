@@ -57,5 +57,25 @@ At this point you can build and execute the application:
 	./data.sh
 
 # 5 Visualizing the cache
+
 Open a browser and type <http://localhost:8080/jdg-visualizer>
 
+# 6 Stopping and starting Data Grid nodes
+
+Get into the container running Data Grid nodes:
+
+	docker exec -i -t jdg bash
+
+Execute supervisorctl in the container:
+
+	[root@1bdf8fef169f /]#supervisorctl
+
+Check process status:
+
+	supervisor> status
+	jdg1                             RUNNING    pid 1700, uptime 0:02:42
+	jdg2                             RUNNING    pid 1897, uptime 0:01:08
+	jdg3                             RUNNING    pid 1479, uptime 0:03:00
+	jdg4                             RUNNING    pid 8, uptime 0:08:25
+
+With Supervisor you can stop and start the different Data Grid nodes and see the results in the web application.

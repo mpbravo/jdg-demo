@@ -36,7 +36,10 @@ RUN /usr/bin/unzip -q $HOME/tmp/jboss-datagrid-6.4.0-server.zip -d $HOME/jdg
 ENV JDG_HOME $HOME/jdg/jboss-datagrid-6.4.0-server
 RUN $JDG_HOME/bin/add-user.sh -g admin -u admin -p redhat123. -s
 COPY ./node* $HOME/bin/
-COPY ./launch.sh $HOME/bin/
+# Fix a problem which prevented the correct jboss service management (stop/start) from supervisor
+# This fix is required for both standalone and clustered modes
+RUN sed -i.bak "s/eval \\\/eval exec \\\/g" $JDG_HOME/bin/standalone.sh ; \
+    sed -i.bak "s/eval \\\/eval exec \\\/g" $JDG_HOME/bin/clustered.sh
 
 ######################################################################
 # Configure visualizer demo                                          #
@@ -62,4 +65,4 @@ RUN rm $HOME/tmp/*
 # CMD ["/bin/bash", "/home/jboss/jdg/jboss-datagrid-6.4.0-server/bin/launch.sh"]
 EXPOSE 8081 9991 10000 11223 8082 9992 10001 11224 8083 9993 10002 11225 8084 9994 10003 11226
 USER root
-CMD ["home/jboss/bin/launch.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
