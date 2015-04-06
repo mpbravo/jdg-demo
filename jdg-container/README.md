@@ -1,4 +1,4 @@
-# JBoss EAP Docker Container
+# JBoss Data Grid Docker Container
 
 ## Required external files
 Before running the docker command to create the image, you will have to download Red Hat JBoss Data Grid v6.4 from http://www.jboss.org/products/datagrid/overview/ and copy into this folder.
